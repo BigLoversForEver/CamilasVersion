@@ -1,0 +1,23 @@
+{
+  "name": "camila",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/unit/*.test.js",
+    "test:e2e": "playwright test",
+    "format": "prettier --write src tests *.js *.html *.json README.md"
+  },
+  "dependencies": {
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "prettier": "^3.9.8",
+    "vite": "^8.3.0"
+  }
+}
