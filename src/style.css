@@ -1,148 +1,375 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
 :root {
-  --paper: #f8f5e9;
-  --ink: #303e2c;
-  --muted: #828575;
-  --gold: #c59a3a;
+  font-family: 'DM Sans', sans-serif;
+  color: #294536;
+  background: #f6f6ed;
+  font-synthesis: none;
+  --ink: #294536;
+  --muted: #718172;
+  --forest: #294d3b;
+  --gold: #ae873a;
+  --line: #dde3d5;
+  --paper: #f6f6ed;
 }
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
+}
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+input {
+  font: inherit;
 }
 button,
 a {
-  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 button {
-  font: inherit;
   cursor: pointer;
 }
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid #ba852d;
-  outline-offset: 6px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
-header {
-  height: 96px;
-  max-width: 1400px;
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #ad8d41;
+  outline-offset: 5px;
+}
+::selection {
+  background: #d8dfb7;
+  color: #244631;
+}
+.icon {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.page-shell {
+  overflow: clip;
+  background:
+    radial-gradient(ellipse at 0% 12%, #dfe8d57d, transparent 27%),
+    radial-gradient(ellipse at 100% 18%, #e7ebd67a, transparent 30%), var(--paper);
+}
+.site-header {
+  max-width: 1280px;
+  height: 104px;
   margin: auto;
-  padding: 0 6%;
+  padding: 0 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #dce3d375;
 }
 .brand {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  font:
+    400 18px 'Playfair Display',
+    Georgia,
+    serif;
 }
 .brand-flower {
-  color: var(--gold);
-  font-size: 34px;
+  width: 39px;
+  height: 39px;
+}
+.brand small {
+  display: block;
+  font:
+    500 8px 'DM Sans',
+    sans-serif;
+  letter-spacing: 2.2px;
+  margin-top: 5px;
+  color: #7a866f;
+}
+.site-header nav {
+  display: flex;
+  gap: 34px;
+  font-size: 12px;
+}
+.site-header nav a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.site-header nav a:hover {
+  color: #ab8436;
+}
+.site-header nav .icon {
+  width: 14px;
+  height: 14px;
 }
 .header-note {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: #858875;
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #79866c;
 }
-.header-note span {
-  font-size: 20px;
-  margin-left: 13px;
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #71845d;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #82976c12;
 }
 .intro {
+  max-width: 1440px;
+  margin: auto;
+  position: relative;
   text-align: center;
-  padding: 47px 20px 42px;
+  padding: 69px 30px 70px;
+  isolation: isolate;
 }
 .eyebrow {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  letter-spacing: 2.7px;
-  font-size: 10px;
-  color: #898367;
+  gap: 9px;
+  padding: 8px 15px;
+  background: #e8eddd;
+  border: 1px solid #dce4cf;
+  border-radius: 30px;
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  color: #697d54;
 }
-.eyebrow span {
-  height: 1px;
-  width: 25px;
-  background: #c7b889;
+.eyebrow .icon {
+  width: 14px;
+  height: 14px;
 }
 h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(38px, 4.5vw, 66px);
-  letter-spacing: -2px;
-  line-height: 1.17;
-  margin: 24px 0 21px;
+  font:
+    400 clamp(40px, 4.7vw, 68px)/1.15 'Playfair Display',
+    Georgia,
+    serif;
+  letter-spacing: -2.5px;
+  margin: 26px auto 23px;
   position: relative;
-  display: inline-block;
+  width: fit-content;
 }
 h1 em {
-  color: #a78332;
   font-weight: 400;
+  color: #738753;
+  position: relative;
+}
+h1 em:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 8%;
+  right: 5%;
+  height: 9px;
+  border-top: 1px solid #b3b876;
+  border-radius: 50%;
+  transform: rotate(-2deg);
 }
 .title-flower {
   position: absolute;
-  width: 65px;
-  height: 72px;
-  right: -74px;
-  bottom: 0;
-  transform: rotate(13deg);
+  right: -65px;
+  bottom: 5px;
+  width: 49px;
+  height: 49px;
+  transform: rotate(12deg);
 }
-.intro p {
+.intro > p {
   font-size: 13px;
   line-height: 1.9;
-  color: #858574;
+  color: var(--muted);
   margin: 0;
 }
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 29px 0 23px;
+}
 .primary {
-  background: #35482f;
-  color: #fffdf2;
-  border: 0;
-  border-radius: 6px;
-  padding: 15px 23px;
-  margin: 26px 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #34513d;
+  background: var(--forest);
+  color: #fffdec;
+  border-radius: 8px;
+  padding: 16px 21px;
   font-size: 12px;
-  box-shadow: 0 5px 10px #2e412e12;
+  box-shadow: 0 6px 12px #23493115;
   transition:
+    transform 0.2s,
     background 0.2s,
-    transform 0.2s;
+    box-shadow 0.2s;
 }
 .primary:hover {
-  background: #49603b;
+  background: #3e6247;
   transform: translateY(-2px);
+  box-shadow: 0 8px 16px #23493120;
 }
-.primary span:first-child {
-  margin-right: 10px;
-  font-size: 16px;
+.primary .icon {
+  width: 17px;
+  height: 17px;
 }
-.primary span:last-child {
-  margin-left: 23px;
+.primary .icon:last-child {
+  margin-left: 14px;
+}
+.text-link {
+  font-size: 11px;
+  color: #728066;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.text-link .icon {
+  width: 14px;
+  height: 14px;
+}
+.text-link:hover {
+  color: #294d3b;
 }
 .intro-caption {
+  font-size: 9px;
+  letter-spacing: 0.25px;
+  color: #91987f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+}
+.intro-caption > span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #adb590;
+}
+.hero-botanical {
+  position: absolute;
+  z-index: -1;
+  color: #849970;
+  pointer-events: none;
+  width: 170px;
+  bottom: 12px;
+}
+.botanical-left {
+  left: 0;
+  transform: rotate(-20deg);
+  opacity: 0.54;
+}
+.botanical-right {
+  right: -15px;
+  bottom: 30px;
+  transform: scaleX(-1) rotate(-12deg);
+  width: 165px;
+  opacity: 0.35;
+}
+.botanical-label {
   display: block;
+  font:
+    italic 15px 'Playfair Display',
+    Georgia,
+    serif;
+  transform: rotate(8deg);
+  margin-top: -12px;
+  margin-left: 30px;
+}
+.floating-spark {
+  position: absolute;
+  color: #b5a868;
+  font-size: 24px;
+}
+.spark-one {
+  left: 20%;
+  top: 103px;
+}
+.spark-two {
+  right: 19%;
+  bottom: 110px;
+  font-size: 16px;
+}
+.garden-section {
+  max-width: 1152px;
+  margin: auto;
+  padding: 0 24px;
+  scroll-margin-top: 30px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 5px 22px;
+}
+.tiny-label {
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  font-weight: 500;
+  color: #859174;
+}
+.section-heading h2 {
+  font:
+    400 29px 'Playfair Display',
+    Georgia,
+    serif;
+  margin: 8px 0 0;
+  letter-spacing: -0.7px;
+}
+.section-heading h2 em {
+  font-weight: 400;
+  color: #839363;
+}
+.garden-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 10px;
-  color: #979584;
+  color: #83916e;
+  padding-bottom: 5px;
+}
+.garden-tag .icon {
+  width: 16px;
+  height: 16px;
+  color: #ad995a;
+}
+.garden-frame {
+  padding: 9px 9px 0;
+  background: #fffff680;
+  border: 1px solid #dce2d2;
+  border-radius: 18px;
+  box-shadow: 0 14px 45px #41573a08;
 }
 .garden {
   isolation: isolate;
   position: relative;
   overflow: hidden;
-  height: 480px;
-  max-width: 1230px;
-  margin: 0 auto;
-  background: linear-gradient(#f0efdc 0%, #f3eac5 52%, #e7dfaa 78%, #89905a 100%);
-  border: 1px solid #e7e4d0;
-  border-radius: 12px;
+  height: 490px;
+  background: linear-gradient(170deg, #e9edda 0%, #eef0d8 30%, #ede8bb 65%, #a2b37a 100%);
+  border: 1px solid #dce3c9;
+  border-radius: 11px;
 }
 .garden:after {
   content: '';
@@ -161,72 +388,108 @@ h1 em {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #777b58;
-  font-size: 9px;
-  letter-spacing: 1.7px;
+  color: #758465;
+  font-size: 8px;
+  letter-spacing: 1.6px;
 }
 .garden-top i {
   display: inline-block;
   width: 5px;
   height: 5px;
-  background: #889264;
+  background: #778c58;
   border-radius: 50%;
   margin-right: 8px;
 }
-.garden-top button {
-  border: 1px solid #c9c9aa;
-  border-radius: 30px;
-  padding: 7px 12px;
-  background: #faf8e850;
-  color: #777b58;
+.season {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  letter-spacing: 0.2px;
   font-size: 10px;
-  letter-spacing: 0;
+  padding: 7px 10px;
+  border: 1px solid #cdd6b7;
+  border-radius: 20px;
+  background: #f7f8e54d;
+}
+.season .icon {
+  width: 14px;
+  height: 14px;
+  color: #a08f4b;
 }
 .sun {
   position: absolute;
-  right: 18%;
-  top: 75px;
+  right: 15%;
+  top: 90px;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: #f7d979;
-  box-shadow: 0 0 55px 35px #f4d77b35;
+  background: #efd580;
+  box-shadow: 0 0 70px 40px #f4db9545;
+  animation: sunlight 8s ease-in-out infinite;
 }
 .sun-halo {
   position: absolute;
-  right: calc(18% - 35px);
-  top: 40px;
-  width: 150px;
-  height: 150px;
-  border: 1px solid #ecdaa74d;
+  right: calc(15% - 31px);
+  top: 59px;
+  width: 142px;
+  height: 142px;
+  border: 1px solid #e6d79c70;
   border-radius: 50%;
+}
+.sun-halo:after {
+  content: '';
+  position: absolute;
+  inset: -25px;
+  border: 1px solid #e6d79c30;
+  border-radius: 50%;
+}
+.cloud {
+  position: absolute;
+  border-radius: 50%;
+  background: #fffef045;
+  filter: blur(12px);
+  height: 22px;
+  pointer-events: none;
+}
+.cloud-one {
+  width: 180px;
+  top: 125px;
+  right: 32%;
+  animation: cloud-drift 22s ease-in-out infinite alternate;
+}
+.cloud-two {
+  width: 130px;
+  top: 210px;
+  right: 2%;
+  animation: cloud-drift 28s ease-in-out infinite alternate-reverse;
 }
 .stage-copy {
   position: absolute;
-  top: 85px;
-  left: 7%;
+  top: 92px;
+  left: 6%;
   z-index: 2;
-  max-width: 70%;
+  max-width: 65%;
   pointer-events: none;
 }
 .stage-copy > span {
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 2px;
-  color: #999064;
+  color: #7e8d5e;
 }
 .stage-copy h2 {
   font:
-    400 26px 'Playfair Display',
+    400 27px 'Playfair Display',
     Georgia,
     serif;
-  margin: 12px 0 9px;
+  margin: 13px 0 10px;
+  letter-spacing: -0.5px;
 }
 .stage-copy p {
   font-size: 11px;
-  color: #8c8b70;
+  color: #77816a;
   margin: 0;
-  max-width: 330px;
-  line-height: 1.7;
+  max-width: 340px;
+  line-height: 1.8;
 }
 canvas {
   position: absolute;
@@ -236,272 +499,1178 @@ canvas {
 }
 .garden-bottom {
   position: absolute;
-  bottom: 17px;
-  left: 26px;
-  right: 26px;
+  bottom: 18px;
+  left: 25px;
+  right: 25px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 2;
-  color: #faf6dc;
-  font-size: 8px;
-  letter-spacing: 1.7px;
+  color: #faf9e4;
+  font-size: 7px;
+  letter-spacing: 1.5px;
 }
-.garden-bottom span:last-child {
-  font-family: Georgia, serif;
+.garden-bottom > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.garden-bottom .icon {
+  width: 13px;
+  height: 13px;
+}
+.garden-bottom > span:last-child {
+  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
   font-size: 12px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
+}
+.garden-bottom > span:last-child span {
+  margin-left: 4px;
 }
 .journey {
-  max-width: 870px;
-  margin: 28px auto 0;
-  padding: 0 25px;
+  max-width: 860px;
+  margin: auto;
+  padding: 25px 28px 21px;
+}
+.journey-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5px 18px;
+}
+.journey-heading > span {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #8b957e;
+}
+.journey-heading small {
+  font-size: 10px;
+  color: #81906c;
 }
 .steps {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 18px;
 }
 .step {
   border: 0;
   background: none;
-  color: #aaa894;
+  color: #9da48f;
   display: flex;
   align-items: center;
   gap: 10px;
   text-align: left;
   white-space: nowrap;
-  padding: 5px;
+  padding: 4px;
+  border-radius: 7px;
+  transition: color 0.2s;
+}
+.step:hover {
+  color: #3e6344;
 }
 .step-icon {
-  border: 1px solid #dddac6;
-  width: 40px;
-  height: 40px;
+  border: 1px solid #dbe2cf;
+  width: 41px;
+  height: 41px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  font-size: 26px;
+  background: #f5f7ec;
+  transition:
+    background 0.25s,
+    box-shadow 0.25s;
+}
+.step-icon .icon {
+  width: 20px;
+  height: 20px;
 }
 .step > span:last-child {
   font-size: 11px;
 }
 .step small {
   display: block;
-  font-size: 8px;
+  font-size: 7px;
   letter-spacing: 1.3px;
   margin-bottom: 4px;
 }
 .step.active {
-  color: #5f693d;
+  color: #526e43;
 }
 .step.active .step-icon {
-  background: #ece8cb;
-  border-color: #c8bd80;
-  color: #8c782e;
+  background: #e3ebd5;
+  border-color: #cddab9;
+}
+.step[aria-current='step'] .step-icon {
+  background: #36593f;
+  border-color: #36593f;
+  color: #f5f4d9;
+  box-shadow: 0 0 0 4px #e6eddb;
 }
 .connector {
   height: 1px;
-  background: #dddac6;
+  background: #dce3d2;
   flex: 1;
 }
 .playback {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin: 23px 5px;
+  margin: 20px 5px 0;
 }
 .playback button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   border: 0;
   background: none;
-  color: #8f917e;
+  color: #697d5a;
   font-size: 10px;
-  padding: 5px 0;
+  padding: 7px 0;
+  min-height: 30px;
+}
+.playback button .icon {
+  width: 14px;
+  height: 14px;
 }
 .playback button:disabled {
   opacity: 0.4;
-  cursor: default;
 }
 .progress {
-  height: 2px;
-  background: #e6e1cd;
+  height: 4px;
+  background: #e6ebdc;
   flex: 1;
+  border-radius: 6px;
+  overflow: hidden;
 }
 .progress > div {
   height: 100%;
   width: 0;
-  background: #ad9856;
+  background: linear-gradient(90deg, #9eb275, #577847);
+  border-radius: 6px;
 }
-.dedication {
-  text-align: center;
-  padding: 62px 20px 63px;
+.music-player {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0 0;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: #eaf0df;
+  border: 1px solid #dce5d0;
 }
-.dedication > span {
-  font-size: 8px;
-  letter-spacing: 2px;
-  color: #95907a;
+.album-art {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: #314f3a;
+  border-radius: 9px;
+  padding: 8px;
+  box-shadow: inset 0 0 0 1px #ffffff12;
 }
-.dedication p {
+.album-art svg {
+  width: 100%;
+  height: 100%;
+}
+.music-player.is-playing .album-art svg {
+  animation: record-spin 24s linear infinite;
+}
+.music-copy {
+  flex: 1;
+}
+.music-copy .tiny-label {
+  font-size: 7px;
+  letter-spacing: 1.6px;
+}
+.music-copy h2 {
   font:
-    400 25px/1.65 'Playfair Display',
+    400 18px 'Playfair Display',
     Georgia,
     serif;
-  margin: 22px 0;
+  margin: 4px 0;
 }
-.dedication p em {
-  color: #899070;
-  font-weight: 400;
+.music-copy p {
+  font-size: 9px;
+  color: #7c8d6e;
+  margin: 0;
 }
-.dedication > div {
-  font-size: 12px;
-  color: #717959;
+.music-toggle {
+  width: 39px;
+  height: 39px;
+  border: 1px solid #b9caaa;
+  border-radius: 50%;
+  color: #4d6d40;
+  display: grid;
+  place-items: center;
+  background: #f4f7e9;
+  flex-shrink: 0;
+  transition: background 0.2s;
 }
-.dedication > div span {
-  color: #b89b4b;
+.music-toggle:hover {
+  background: #d6e2c4;
+}
+.music-toggle .icon {
+  width: 18px;
+  height: 18px;
+}
+.music-toggle[aria-pressed='true'] {
+  background: #37573e;
+  color: #f6f5df;
+  border-color: #37573e;
+}
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-left: 23px;
   margin-left: 8px;
+  border-left: 1px solid #d2ddc6;
+  color: #7d8f6c;
 }
-footer {
-  max-width: 1230px;
-  margin: auto;
-  border-top: 1px solid #e3dfcf;
-  padding: 23px 0 30px;
+.volume-control .icon {
+  width: 15px;
+  height: 15px;
+}
+.volume-control input {
+  appearance: none;
+  width: 84px;
+  height: 4px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #829968 var(--volume), #d3dec7 var(--volume));
+  cursor: pointer;
+}
+.volume-control input::-webkit-slider-thumb {
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #5d7c4c;
+  border: 2px solid #edf2e0;
+}
+.volume-control input::-moz-range-thumb {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5d7c4c;
+  border: 2px solid #edf2e0;
+}
+.volume-value {
+  font-size: 8px;
+  min-width: 23px;
+}
+.equalizer {
+  display: inline-flex;
+  gap: 2px;
+  height: 13px;
+  align-items: center;
+  margin-left: 9px;
+  vertical-align: middle;
+}
+.equalizer i {
+  display: block;
+  width: 2px;
+  height: 3px;
+  background: #7d9c5c;
+  border-radius: 2px;
+}
+.equalizer.active i {
+  animation: equalize 1.1s ease-in-out infinite alternate;
+}
+.equalizer i:nth-child(2) {
+  animation-delay: -0.6s;
+}
+.equalizer i:nth-child(3) {
+  animation-delay: -0.3s;
+}
+.equalizer i:nth-child(4) {
+  animation-delay: -0.8s;
+}
+.little-things {
+  text-align: center;
+  max-width: 860px;
+  margin: 65px auto 62px;
+  padding: 0 24px;
+}
+.little-things > .tiny-label {
+  font-size: 8px;
+}
+.little-things-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 28px;
+}
+.little-things-grid > div {
+  padding: 0 20px;
+  border-right: 1px solid #e1e5d7;
+}
+.little-things-grid > div:last-child {
+  border: 0;
+}
+.little-things-grid .icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto 12px;
+  color: #8a9b65;
+}
+.little-things-grid span {
+  font:
+    400 17px 'Playfair Display',
+    Georgia,
+    serif;
+}
+.little-things-grid p {
+  font-size: 10px;
+  color: #8b967d;
+  margin: 8px 0 0;
+}
+.dedication {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  max-width: 1104px;
+  margin: 0 auto 48px;
+  background: #2d4a38;
+  border: 1px solid #284230;
+  border-radius: 16px;
+  padding: 49px 62px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  color: #f5f2db;
+  box-shadow: 0 15px 35px #2449320a;
+}
+.dedication:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(ellipse at 95% 50%, #56694b70, transparent 65%);
+}
+.note-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+.note-content > .tiny-label {
+  color: #b9c59c;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 7px;
+  letter-spacing: 2px;
+}
+.note-content > .tiny-label .icon {
+  width: 15px;
+  height: 15px;
+}
+.note-content h2 {
+  font:
+    400 37px/1.28 'Playfair Display',
+    Georgia,
+    serif;
+  letter-spacing: -0.8px;
+  margin: 22px 0 17px;
+}
+.note-content h2 em {
+  color: #d5d797;
+  font-weight: 400;
+}
+.note-content > p {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #bdc9ae;
+}
+.note-button {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  border: 1px solid #788968;
+  border-radius: 6px;
+  background: #ffffff05;
+  color: #edeed3;
+  padding: 12px 16px;
   font-size: 10px;
-  color: #969683;
+  transition: background 0.2s;
 }
-.gold {
-  color: #bda04e;
-  font-size: 18px;
-  margin-left: 12px;
+.note-button:hover {
+  background: #ffffff12;
 }
-@media (min-width: 1600px) {
+.note-button .icon {
+  width: 14px;
+  height: 14px;
+}
+.note-art {
+  position: relative;
+  width: 260px;
+  margin-right: 10px;
+  padding-top: 2px;
+}
+.note-art > svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  transform: rotate(8deg);
+}
+.note-orbit {
+  position: absolute;
+  border: 1px solid #82906b4d;
+  border-radius: 50%;
+  width: 225px;
+  height: 225px;
+  top: 26px;
+  left: 15px;
+}
+.note-orbit:after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #82906b26;
+  border-radius: 50%;
+}
+.handwritten {
+  display: block;
+  text-align: center;
+  font:
+    italic 19px 'Playfair Display',
+    Georgia,
+    serif;
+  color: #d6d9b0;
+  transform: rotate(-7deg);
+  margin-top: -17px;
+}
+.note-branch {
+  position: absolute;
+  width: 230px;
+  bottom: -70px;
+  right: -90px;
+  color: #9bac7f;
+  opacity: 0.12;
+  transform: rotate(-30deg);
+  z-index: -1;
+}
+.personal-note {
+  max-width: 450px;
+  margin-top: 20px;
+  padding: 20px 23px;
+  background: #f4f1dc;
+  color: #435942;
+  border-radius: 3px 12px 12px 12px;
+  animation: unfold 0.35s ease-out;
+}
+.personal-note p {
+  font:
+    400 15px/1.75 'Playfair Display',
+    Georgia,
+    serif;
+  margin: 0 0 14px;
+}
+.personal-note > span {
+  font-size: 10px;
+  color: #8c8f65;
+}
+footer {
+  max-width: 1104px;
+  margin: 0 auto;
+  padding: 0 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  color: #8b967d;
+  font-size: 9px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+}
+.footer-brand > svg {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+}
+footer > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+footer .icon {
+  width: 13px;
+  height: 13px;
+}
+.back-top {
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce3d0;
+  border-radius: 50%;
+  height: 29px;
+  width: 29px;
+  color: #657957;
+  font-size: 15px;
+}
+.garden-age {
+  position: relative;
+  margin: 26px 0 0;
+  padding: 31px 35px 25px;
+  border: 1px solid #dbe3cf;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 0%, #eaf0dc99, transparent 75%), #fafbf2;
+  text-align: center;
+}
+.age-heading {
+  position: relative;
+}
+.age-sprout {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #e7eddb;
+  color: #7d945c;
+}
+.age-sprout .icon {
+  width: 18px;
+  height: 18px;
+}
+.age-heading .tiny-label {
+  font-size: 7px;
+}
+.age-heading h2 {
+  font:
+    400 28px 'Playfair Display',
+    Georgia,
+    serif;
+  letter-spacing: -0.6px;
+  margin: 9px 0 10px;
+}
+.age-heading h2 em {
+  color: #819361;
+  font-weight: 400;
+}
+.age-heading p {
+  font-size: 10px;
+  color: #8a967b;
+  margin: 0;
+}
+.age-units {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 620px;
+  margin: 29px auto 24px;
+}
+.age-unit {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  border-right: 1px solid #dde5d1;
+}
+.age-unit:last-child {
+  border: 0;
+}
+.age-unit dt {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #889777;
+}
+.age-unit dd {
+  font:
+    400 44px/1 'Playfair Display',
+    Georgia,
+    serif;
+  font-variant-numeric: tabular-nums;
+  color: #486340;
+  margin: 0;
+}
+.age-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding-top: 17px;
+  border-top: 1px solid #e6ebdb;
+}
+.age-ticking {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+  color: #7d9168;
+}
+.age-ticking .status-dot {
+  width: 4px;
+  height: 4px;
+}
+.age-since {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font:
+    italic 12px 'Playfair Display',
+    Georgia,
+    serif;
+  color: #8c987b;
+}
+.age-since .icon {
+  width: 12px;
+  height: 12px;
+  margin-left: 3px;
+}
+.age-empty {
+  margin: 0;
+  font:
+    italic 12px 'Playfair Display',
+    Georgia,
+    serif;
+  color: #8c987b;
+}
+@media (max-width: 700px) {
+  .garden-age {
+    margin-top: 17px;
+    padding: 25px 16px 21px;
+  }
+  .age-heading h2 {
+    font-size: 24px;
+  }
+  .age-heading p {
+    font-size: 9px;
+    line-height: 1.7;
+    max-width: 260px;
+    margin: auto;
+  }
+  .age-heading .tiny-label {
+    font-size: 6px;
+  }
+  .age-units {
+    margin: 25px auto 22px;
+  }
+  .age-unit {
+    gap: 8px;
+  }
+  .age-unit dd {
+    font-size: 34px;
+  }
+  .age-unit dt {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+  .age-detail {
+    flex-direction: column;
+    gap: 11px;
+    padding-top: 17px;
+  }
+  .age-ticking {
+    font-size: 8px;
+  }
+  .age-since,
+  .age-empty {
+    font-size: 11px;
+  }
+}
+@keyframes sunlight {
+  50% {
+    box-shadow: 0 0 80px 45px #f4db9560;
+  }
+}
+@keyframes cloud-drift {
+  to {
+    transform: translateX(50px);
+  }
+}
+@keyframes record-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes equalize {
+  to {
+    height: 12px;
+  }
+}
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 1500px) {
   .intro {
-    padding-top: 65px;
+    padding-top: 85px;
+    padding-bottom: 85px;
   }
   .garden {
-    height: 530px;
+    height: 520px;
+  }
+  .hero-botanical {
+    width: 205px;
+  }
+  .botanical-left {
+    left: 15px;
+  }
+  .botanical-right {
+    right: 15px;
   }
 }
-@media (max-width: 800px) {
-  header {
-    height: 76px;
-    padding: 0 6%;
+@media (max-width: 1100px) {
+  .site-header {
+    padding: 0 32px;
   }
-  .header-note {
-    font-size: 8px;
-    letter-spacing: 1px;
+  .hero-botanical {
+    width: 120px;
+    opacity: 0.25;
   }
-  .intro {
-    padding-top: 32px;
+  .botanical-left {
+    left: -20px;
   }
-  h1 {
-    letter-spacing: -1px;
+  .botanical-right {
+    right: -28px;
+  }
+  .spark-one {
+    left: 11%;
+  }
+  .spark-two {
+    right: 10%;
+  }
+  .dedication {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  footer {
+    margin-left: 24px;
+    margin-right: 24px;
   }
   .title-flower {
-    width: 40px;
-    right: -35px;
-    bottom: 5px;
+    width: 42px;
+    right: -51px;
+  }
+  .note-art {
+    width: 220px;
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    height: 86px;
+    padding: 0 23px;
+  }
+  .brand {
+    font-size: 15px;
+    gap: 8px;
+  }
+  .brand-flower {
+    width: 32px;
+    height: 32px;
+  }
+  .brand small {
+    font-size: 6px;
+    letter-spacing: 1.7px;
+  }
+  .site-header nav {
+    gap: 0;
+  }
+  .site-header nav a:first-child {
+    display: none;
+  }
+  .site-header nav a {
+    font-size: 10px;
+  }
+  .header-note {
+    display: none;
+  }
+  .intro {
+    padding: 44px 20px 45px;
+  }
+  .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.4px;
+    padding: 7px 10px;
+  }
+  .eyebrow .icon {
+    width: 11px;
+    height: 11px;
+  }
+  h1 {
+    font-size: clamp(35px, 7.5vw, 48px);
+    letter-spacing: -1.3px;
+    line-height: 1.19;
+    margin: 24px auto 24px;
+  }
+  .title-flower {
+    display: none;
+  }
+  .intro > p {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+    margin-bottom: 21px;
+  }
+  .primary {
+    padding: 14px 19px;
+    font-size: 11px;
+  }
+  .text-link {
+    font-size: 10px;
+  }
+  .intro-caption {
+    font-size: 8px;
+    gap: 7px;
+  }
+  .hero-botanical {
+    width: 91px;
+    bottom: 92px;
+    opacity: 0.19;
+  }
+  .botanical-left {
+    left: -34px;
+  }
+  .botanical-right {
+    right: -33px;
+    bottom: 119px;
+  }
+  .botanical-label {
+    display: none;
+  }
+  .spark-one {
+    top: 121px;
+    left: 7%;
+    font-size: 14px;
+  }
+  .spark-two {
+    bottom: 123px;
+    right: 7%;
+    font-size: 15px;
+  }
+  .garden-section {
+    padding: 0 15px;
+  }
+  .section-heading {
+    margin-bottom: 17px;
+  }
+  .tiny-label {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+  .section-heading h2 {
+    font-size: 26px;
+    margin-top: 7px;
+  }
+  .garden-tag {
+    font-size: 8px;
+    gap: 4px;
+    max-width: 85px;
+    line-height: 1.6;
+  }
+  .garden-tag .icon {
+    width: 13px;
+    height: 13px;
+  }
+  .garden-frame {
+    padding: 6px 6px 0;
+    border-radius: 14px;
   }
   .garden {
-    margin: 0 18px;
-    height: 450px;
+    height: 460px;
+    border-radius: 9px;
+  }
+  .garden-top {
+    left: 15px;
+    right: 15px;
+    top: 17px;
+    font-size: 6px;
+    letter-spacing: 1.2px;
+  }
+  .garden-top i {
+    width: 4px;
+    height: 4px;
+    margin-right: 5px;
+  }
+  .season {
+    font-size: 8px;
+    padding: 6px 8px;
+    gap: 5px;
+  }
+  .season .icon {
+    width: 12px;
+    height: 12px;
   }
   .stage-copy {
-    top: 82px;
+    top: 79px;
     left: 7%;
-    max-width: 70%;
+    max-width: 82%;
+  }
+  .stage-copy > span {
+    font-size: 7px;
+    letter-spacing: 1.6px;
   }
   .stage-copy h2 {
     font-size: 23px;
+    max-width: 260px;
+    margin: 12px 0 9px;
+    line-height: 1.3;
+  }
+  .stage-copy p {
+    font-size: 10px;
+    max-width: 225px;
+    line-height: 1.7;
   }
   .sun {
-    right: 10%;
-    width: 60px;
-    height: 60px;
-    top: 128px;
+    width: 55px;
+    height: 55px;
+    right: 9%;
+    top: 185px;
+    opacity: 0.85;
   }
   .sun-halo {
-    display: none;
+    width: 97px;
+    height: 97px;
+    right: calc(9% - 21px);
+    top: 164px;
+  }
+  .cloud-one {
+    top: 240px;
+    right: 35%;
+  }
+  .cloud-two {
+    top: 180px;
+    right: 4%;
+  }
+  .garden-bottom {
+    left: 15px;
+    right: 15px;
+    bottom: 14px;
+    font-size: 5px;
+    letter-spacing: 1px;
+    gap: 8px;
+  }
+  .garden-bottom .icon {
+    width: 10px;
+    height: 10px;
+  }
+  .garden-bottom > span:first-child {
+    gap: 4px;
+  }
+  .garden-bottom > span:last-child {
+    font-size: 9px;
+    max-width: 135px;
+    text-align: right;
+    line-height: 1.5;
+  }
+  .journey {
+    padding: 20px 10px 14px;
+  }
+  .journey-heading {
+    margin: 0 4px 17px;
+  }
+  .journey-heading > span {
+    font-size: 6px;
+    letter-spacing: 1.2px;
+  }
+  .journey-heading small {
+    font-size: 8px;
   }
   .steps {
-    gap: 5px;
+    gap: 6px;
   }
   .step {
     flex-direction: column;
+    gap: 9px;
     text-align: center;
-    gap: 7px;
+    padding: 3px;
   }
-  .connector {
-    margin-top: -28px;
+  .step-icon {
+    width: 35px;
+    height: 35px;
+  }
+  .step-icon .icon {
+    width: 18px;
+    height: 18px;
   }
   .step > span:last-child {
-    font-size: 10px;
+    font-size: 9px;
   }
   .step small {
     display: none;
   }
-  .journey {
-    padding: 0 22px;
+  .connector {
+    margin-top: -23px;
   }
-  .dedication {
-    padding: 45px 20px;
+  .playback {
+    gap: 12px;
+    margin-top: 18px;
   }
-  .dedication p {
-    font-size: 21px;
+  .playback button {
+    font-size: 8px;
+    gap: 4px;
   }
-  footer {
-    margin: 0 24px;
-    font-size: 9px;
+  .playback button .icon {
+    width: 12px;
+    height: 12px;
   }
-  .garden-top {
-    left: 18px;
-    right: 18px;
+  .progress {
+    height: 3px;
+  }
+  .music-player {
+    padding: 15px;
+    gap: 11px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .album-art {
+    width: 44px;
+    height: 44px;
+    padding: 7px;
+  }
+  .music-copy .tiny-label {
+    font-size: 5px;
+    letter-spacing: 1.2px;
+  }
+  .music-copy h2 {
+    font-size: 17px;
+  }
+  .music-copy p {
     font-size: 8px;
   }
-  .garden-bottom {
-    left: 18px;
-    right: 18px;
-    font-size: 6px;
+  .music-toggle {
+    width: 35px;
+    height: 35px;
   }
-  .garden-bottom span:last-child {
-    font-size: 10px;
+  .volume-control {
+    flex-basis: 100%;
+    justify-content: flex-end;
+    border-left: 0;
+    border-top: 1px solid #d9e3cb;
+    padding: 12px 0 0;
+    margin: 0;
   }
-}
-@media (max-width: 420px) {
-  .title-flower {
-    display: none;
+  .volume-control:before {
+    content: 'Un poquito de calma';
+    font:
+      italic 11px 'Playfair Display',
+      Georgia,
+      serif;
+    margin-right: auto;
+    color: #8a9878;
   }
-  .intro p {
-    font-size: 11px;
+  .volume-control input {
+    width: 80px;
   }
-  h1 {
-    font-size: 36px;
+  .little-things {
+    margin: 43px auto 40px;
+    padding: 0 15px;
   }
-  .eyebrow {
-    font-size: 8px;
-    letter-spacing: 2px;
-  }
-  .header-note {
+  .little-things > .tiny-label {
     font-size: 7px;
   }
-  .brand {
-    font-size: 12px;
+  .little-things-grid {
+    margin-top: 24px;
   }
-  .stage-copy h2 {
-    font-size: 21px;
+  .little-things-grid > div {
+    padding: 0 8px;
   }
-  .stage-copy p {
+  .little-things-grid .icon {
+    width: 22px;
+    height: 22px;
+  }
+  .little-things-grid span {
+    font-size: 14px;
+    line-height: 1.45;
+    display: block;
+  }
+  .little-things-grid p {
+    font-size: 8px;
+    line-height: 1.6;
+  }
+  .dedication {
+    margin: 0 15px 28px;
+    padding: 30px 26px;
+    display: block;
+    border-radius: 13px;
+  }
+  .note-content > .tiny-label {
+    font-size: 6px;
+    letter-spacing: 1.6px;
+  }
+  .note-content h2 {
+    font-size: 32px;
+    margin-top: 21px;
+  }
+  .note-content > p {
     font-size: 10px;
+    line-height: 1.9;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .note-button {
+    padding: 12px 14px;
+    font-size: 9px;
+    margin-top: 20px;
+  }
+  .note-art {
+    width: 185px;
+    margin: 18px auto 0;
+  }
+  .note-orbit {
+    width: 170px;
+    height: 170px;
+    left: 5px;
+    top: 10px;
+  }
+  .handwritten {
+    font-size: 17px;
+    margin-top: -10px;
+  }
+  .personal-note {
+    padding: 17px;
+  }
+  .personal-note p {
+    font-size: 14px;
   }
   footer {
-    gap: 25px;
-    line-height: 1.7;
+    margin: 0 22px;
+    gap: 15px;
+    font-size: 8px;
+    flex-wrap: wrap;
+    padding-bottom: 27px;
+  }
+  .footer-brand {
+    flex-basis: calc(100% - 50px);
+  }
+  .footer-brand > svg {
+    width: 22px;
+    height: 22px;
+  }
+  footer > span {
+    order: 3;
+    font-size: 7px;
+    padding-left: 31px;
+  }
+  .back-top {
+    width: 27px;
+    height: 27px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  * {
-    scroll-behavior: auto !important;
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
     transition: none !important;
   }
 }

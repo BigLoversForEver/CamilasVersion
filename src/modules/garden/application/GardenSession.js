@@ -1,6 +1,6 @@
 import { Garden } from '../domain/Garden.js'
 
-/** Use cases for one visit. The garden is ephemeral; no persistence is needed. */
+/** Playback for one visit. The persistent first planting belongs to GardenHistory. */
 export class GardenSession {
   #garden = new Garden()
   constructor({ reducedMotion = false } = {}) {

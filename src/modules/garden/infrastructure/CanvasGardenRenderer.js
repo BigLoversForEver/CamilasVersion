@@ -73,7 +73,13 @@ export function createGardenRenderer(canvas) {
     const bloom = ease((progress - f.delay - 0.57) / 0.25)
     // Reserve space above the flowers for the stage text on narrow screens.
     const scale = width < 600 ? 0.68 : 1
-    const stemHeight = (height * 0.4 + f.size * 35) * depth * growth * scale
+    const headRadius = (16 + f.size * 10) * depth * scale
+    const textBoundary = width < 600 ? 230 : 205
+    const matureHeight = Math.min(
+      (height * 0.4 + f.size * 35) * depth * scale,
+      ground - textBoundary - headRadius * 1.4,
+    )
+    const stemHeight = Math.max(0, matureHeight) * growth
     const sway = reducedMotion ? 0 : Math.sin(time * 0.00065 + f.phase) * 4 * growth
     const topX = x + f.bend * growth + sway
     const topY = ground - stemHeight
@@ -85,14 +91,14 @@ export function createGardenRenderer(canvas) {
       ctx.fill()
     }
     if (growth <= 0) return
-    ctx.strokeStyle = f.row === 0 ? '#7b8a4b' : '#586c37'
+    ctx.strokeStyle = f.row === 0 ? '#789264' : '#486d42'
     ctx.lineWidth = (2 + f.row) * growth
     ctx.lineCap = 'round'
     ctx.beginPath()
     ctx.moveTo(x, ground)
     ctx.quadraticCurveTo(x + sway, ground - stemHeight * 0.55, topX, topY)
     ctx.stroke()
-    ctx.fillStyle = f.row === 0 ? '#879755' : '#627d40'
+    ctx.fillStyle = f.row === 0 ? '#8ca771' : '#61884e'
     const leafSize = (20 + f.size * 15) * depth * ease(growth * 1.6) * scale
     leaf(x + (topX - x) * 0.25, ground - stemHeight * 0.32, leafSize, -1)
     leaf(x + (topX - x) * 0.55, ground - stemHeight * 0.59, leafSize * 0.85, 1)
@@ -144,14 +150,22 @@ export function createGardenRenderer(canvas) {
   }
   function draw(time) {
     ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = '#adb078'
+    // Layered green hills keep the garden alive even before the first seed sprouts.
+    ctx.fillStyle = '#b3c49a'
+    ctx.beginPath()
+    ctx.moveTo(0, height)
+    ctx.lineTo(0, height - 115)
+    ctx.bezierCurveTo(width * 0.2, height - 165, width * 0.65, height - 70, width, height - 143)
+    ctx.lineTo(width, height)
+    ctx.fill()
+    ctx.fillStyle = '#97ae79'
     ctx.beginPath()
     ctx.moveTo(0, height)
     ctx.lineTo(0, height - 73)
     ctx.bezierCurveTo(width * 0.25, height - 113, width * 0.65, height - 40, width, height - 90)
     ctx.lineTo(width, height)
     ctx.fill()
-    ctx.fillStyle = '#939e60'
+    ctx.fillStyle = '#7b995f'
     ctx.beginPath()
     ctx.moveTo(0, height)
     ctx.lineTo(0, height - 45)
@@ -164,7 +178,7 @@ export function createGardenRenderer(canvas) {
       const x = (i / 149) * width
       const y = height - 13 + Math.sin(i * 13) * 15
       const h = 15 + (Math.sin(i * 47) + 1) * 15
-      ctx.strokeStyle = i % 2 ? '#697d45' : '#819252'
+      ctx.strokeStyle = i % 2 ? '#527443' : '#8ba268'
       ctx.lineWidth = 1.3
       ctx.beginPath()
       ctx.moveTo(x, y + 15)
@@ -182,6 +196,28 @@ export function createGardenRenderer(canvas) {
         ctx.fill()
       }
       ctx.globalAlpha = 1
+      // A pair of butterflies follows a slow, looping path above the flowers.
+      for (let i = 0; i < 2; i++) {
+        const phase = time * 0.00028 + i * 3
+        const x = width * (0.58 + Math.sin(phase) * 0.23)
+        const y = height * 0.51 + Math.cos(phase * 1.7) * 17
+        const flutter = reducedMotion ? 0.7 : 0.35 + Math.abs(Math.sin(time * 0.007 + i)) * 0.65
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate(Math.sin(phase) * 0.25)
+        ctx.fillStyle = i ? '#f6edd0' : '#e8be5a'
+        for (const side of [-1, 1]) {
+          ctx.beginPath()
+          ctx.ellipse(side * 4 * flutter, -2, 5 * flutter, 7, side * 0.4, 0, Math.PI * 2)
+          ctx.fill()
+          ctx.beginPath()
+          ctx.ellipse(side * 3 * flutter, 4, 3.5 * flutter, 4, -side * 0.3, 0, Math.PI * 2)
+          ctx.fill()
+        }
+        ctx.fillStyle = '#687346'
+        ctx.fillRect(-0.6, -5, 1.2, 11)
+        ctx.restore()
+      }
     }
   }
 
